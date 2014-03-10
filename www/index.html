@@ -23,15 +23,18 @@
         <meta name="format-detection" content="telephone=no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        
+        <script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+        
+    
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
+        <title>VistaPoint</title>
     </head>
     <body>
         <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+            <h1>VistaPoint</h1>
+            <div id="deviceready">
+               
             </div>
         </div>
         <script type="text/javascript" src="phonegap.js"></script>
@@ -39,5 +42,57 @@
         <script type="text/javascript">
             app.initialize();
         </script>
+        <!-- Add jQuery mobile -->
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.2.css" />
+        <script type="text/javascript" src="js/jquery.mobile-1.4.2.min.js"></script>
+        
+        <div data-role="page" data-control-title="Home" data-theme="b" id="page1">
+        <div data-theme="a" data-role="header">
+            <a data-role="button" href="#page1" class="ui-btn-left">
+                Back
+            </a>
+            <h3>
+                Vista Point
+            </h3>
+            <div data-controltype="textblock">
+              <p>
+                  My Score:
+                  <br>
+              </p>
+            </div>
+        </div>
+      
+        <div data-role="content">
+            <div style="width: 288px; height: 200px; position: relative; background-color: #fbfbfb; border: 1px solid #b8b8b8;"
+          data-controltype="image">
+                <img src="https://codiqa.com/static/images/v2/image.png" alt="image" style="position: absolute; top: 50%; left: 50%; margin-left: -16px; margin-top: -18px">
+            </div>
+            <a data-role="button" href="#page2">
+                New Game
+            </a>
+          
+        </div>
+            
+        <div data-role="tabbar" data-iconpos="top" data-theme="a">
+            <ul>
+                <li>
+                    <a href="#page2" data-transition="fade" data-theme="" data-icon="home"
+                  class="ui-btn-active ui-state-persist">
+                      New Game
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-transition="fade" data-theme="" data-icon="star">
+                        Load More
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-transition="fade" data-theme="" data-icon="info">
+                        Help
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
     </body>
 </html>
