@@ -39,12 +39,48 @@
         </div>
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
+        
         <!-- Add jQuery mobile -->
         <link rel="stylesheet" href="css/jquery.mobile-1.4.2.css" />
         <script type="text/javascript" src="js/jquery.mobile-1.4.2.min.js"></script>
+        
+        <script type="text/javascript">
+            app.initialize();
+            
+            function capturePhoto() {
+	       // Take picture using device camera and retrieve image as base64-encoded string
+	  navigator.camera.getPicture(onPhotoDataSuccess, onFail,{
+	          quality : 25, 
+	          destinationType : Camera.DestinationType.FILE_URI, 
+	          sourceType : Camera.PictureSourceType.CAMERA, 
+	          allowEdit : true,
+	          encodingType: Camera.EncodingType.JPEG,
+	          targetWidth: 500,
+	          targetHeight: 500,
+	          saveToPhotoAlbum: true });
+	       };
+             
+            
+            function onPhotoDataSuccess(imageURI) {
+		console.log("YEAH"+imageURI);
+		 // Get image handle
+	      var largeImage = document.getElementById('largeImage');
+		var element = document.getElementById('output');
+		element.innerHTML += "Found:"+imageURI+"<br>";
+	      // Unhide image elements
+	      largeImage.style.display = 'block';
+
+	      // Show the captured photo
+	      // The inline CSS rules are used to resize the image
+	      largeImage.src = imageURI;
+	       };
+            
+            
+            function onFail() {
+                alert("Camera Fail");
+            };
+        </script>
+        
         
         <div data-role="page" data-control-title="Home" data-theme="b" id="page1">
         <div data-theme="a" data-role="header">
@@ -65,11 +101,14 @@
         <div data-role="content">
             <div style="width: 288px; height: 200px; position: relative; background-color: #fbfbfb; border: 1px solid #b8b8b8;"
           data-controltype="image">
-                <img src="https://codiqa.com/static/images/v2/image.png" alt="image" style="position: absolute; top: 50%; left: 50%; margin-left: -16px; margin-top: -18px">
+                <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+                 <img style="display:none;" id="largeImage" src="" />
             </div>
             <a data-role="button" href="#page2">
                 New Game
             </a>
+            
+            <button onclick="capturePhoto();" data-role="button">Capture Photo</button>
           
         </div>
             
