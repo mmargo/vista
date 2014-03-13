@@ -26,112 +26,155 @@
         
         <script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
         
-    
+        <!-- Add jQuery mobile -->
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.2.css" />
+        <script type="text/javascript" src="js/jquery.mobile-1.4.2.min.js"></script>
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <title>VistaPoint</title>
+        
+        <script>
+        var triviaJSON = {"Answers": [ 
+            {"answer":"A", "image":"img/bg/Australia.jpg", "optionA":"Australia", "optionB":"New Zealand", "optionC":"Germany", "optionD":"Canada"}, 
+            {"answer":"D", "image":"img/bg/Bali.jpg", "optionA":"Vietnam", "optionB":"Thailand", "optionC":"China", "optionD":"Indonesia"},
+            {"answer":"C", "image":"img/bg/Vancouver.jpg","optionA":"Mexico","optionB":"Brazil","optionC":"Canada","optionD":"Switzerland"},
+            {"answer":"C", "image":"img/bg/China.jpg","optionA":"Hong Kong","optionB":"Taiwan","optionC":"China","optionD":"Nepal"},
+            {"answer":"C", "image":"img/bg/Egypt.jpg","optionA":"Israel","optionB":"Greece","optionC":"Egypt","optionD":"South Africa"},
+            {"answer":"A", "image":"img/bg/Japan.jpg","optionA":"Japan","optionB":"Korea","optionC":"China","optionD":"Malaysia"}
+            
+                                     ]};
+        </script>
+        
+        
     </head>
     <body>
         <div class="app">
             <h1>VistaPoint</h1>
-            <div id="deviceready">
-               
-            </div>
+            
         </div>
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         
-        <!-- Add jQuery mobile -->
-        <link rel="stylesheet" href="css/jquery.mobile-1.4.2.css" />
-        <script type="text/javascript" src="js/jquery.mobile-1.4.2.min.js"></script>
+        
         
         <script type="text/javascript">
             app.initialize();
-            
-            function capturePhoto() {
-	       // Take picture using device camera and retrieve image as base64-encoded string
-	  navigator.camera.getPicture(onPhotoDataSuccess, onFail,{
-	          quality : 25, 
-	          destinationType : Camera.DestinationType.FILE_URI, 
-	          sourceType : Camera.PictureSourceType.CAMERA, 
-	          allowEdit : true,
-	          encodingType: Camera.EncodingType.JPEG,
-	          targetWidth: 500,
-	          targetHeight: 500,
-	          saveToPhotoAlbum: true });
-	       };
-             
-            
-            function onPhotoDataSuccess(imageURI) {
-		console.log("YEAH"+imageURI);
-		 // Get image handle
-	      var largeImage = document.getElementById('largeImage');
-		var element = document.getElementById('output');
-		element.innerHTML += "Found:"+imageURI+"<br>";
-	      // Unhide image elements
-	      largeImage.style.display = 'block';
-
-	      // Show the captured photo
-	      // The inline CSS rules are used to resize the image
-	      largeImage.src = imageURI;
-	       };
-            
-            
-            function onFail() {
-                alert("Camera Fail");
-            };
         </script>
         
         
-        <div data-role="page" data-control-title="Home" data-theme="b" id="page1">
-        <div data-theme="a" data-role="header">
-            <a data-role="button" href="#page1" class="ui-btn-left">
-                Back
-            </a>
-            <h3>
-                Vista Point
-            </h3>
+        <!-- Main Landing Page --> 
+        <div data-role="page" data-control-title="Home" data-theme="b" id="pageLanding">
+        <div data-data-theme="b" data-role="header">
+            
+            <h3>Vista Point</h3>
             <div data-controltype="textblock">
               <p>
-                  My Score:
-                  <br>
+            	My Score:
               </p>
             </div>
+            
+            <a class="ui-btn-right" data-role="button" href="#pageHelp" class="ui-btn-help" data-icon="info" data-iconpos="notext">About</a>
         </div>
-      
         <div data-role="content">
-            <div style="width: 288px; height: 200px; position: relative; background-color: #fbfbfb; border: 1px solid #b8b8b8;"
-          data-controltype="image">
-                <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
-                 <img style="display:none;" id="largeImage" src="" />
-            </div>
-            <a data-role="button" href="#page2">
-                New Game
-            </a>
-            
-            <button onclick="capturePhoto();" data-role="button">Capture Photo</button>
-          
-        </div>
-            
-        <div data-role="tabbar" data-iconpos="top" data-theme="a">
-            <ul>
-                <li>
-                    <a href="#page2" data-transition="fade" data-theme="" data-icon="home"
-                  class="ui-btn-active ui-state-persist">
-                      New Game
-                    </a>
-                </li>
-                <li>
-                    <a href="#" data-transition="fade" data-theme="" data-icon="star">
-                        Load More
-                    </a>
-                </li>
-                <li>
-                    <a href="#" data-transition="fade" data-theme="" data-icon="info">
-                        Help
-                    </a>
-                </li>
+        <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+        <p>Welcome to VistaPoint. Let's explore the world! Enjoy great pictures and learn where they are taken to expand your horizon. Who knows, you will be inspired to visit the place. 
+        </p>
+        <p>
+            <ul data-role="listview" data-autodividers="false" data-filter="false">
+                <li><a href="#newGameEasy"><h1>New Easy Game</h1></a></li>
+                <li><a href="#newGameHard"><h1>New Hard Game</h1></a></li>
             </ul>
+        
         </div>
     </div>
+    
+    <!-- Help Page --> 
+    <div data-role="page" data-control-title="Help and About" data-theme="b" id="pageHelp">
+        <div data-theme="b" data-role="header">
+            <a data-role="button" href="#pageLanding" class="ui-btn-left">Back</a>
+            <h3>Help</h3>
+        </div>
+        <div data-role="content">
+        <p>Welcome to my simple app to explore the ever shrinking planet earth. I have prepared a sample of wonderful photographs courtesy of Microsoft Bing for you to enjoy. To play simply view the photograph and choose the location where the photograph was taken.</p> 
+        
+        <p>Written by Martin Margo in 2014</p>
+           
+        </div>
+            
+    </div>
+    
+    
+     <!-- newGameEasy page -->
+        <div data-role="page" data-control-title="New Game" data-theme="b" id="newGameEasy">
+            
+        <div data-theme="b" data-role="header">
+            <a data-role="button" href="#pageLanding" class="ui-btn-left">Back</a>
+            <h3>Question 1 of 6</h3>
+        </div>
+        
+        <script>
+            var totalScore = 0;
+        </script>
+         
+
+        <footer data-role="footer" data-id="ansFooter" data-position="fixed">
+            <ul data-role="listview" data-autodividers="false" data-filter="false">
+                <li><div id="optionA"></div></li>
+                <li><div id="optionB"></div></li>
+                <li><div id="optionC"></div></li>
+                <li><div id="optionD"></div></li>
+                
+            </ul>
+
+        </footer>
+        <script>
+            
+            $('#newGameEasy').on('pageinit', function() {
+                var myelem = triviaJSON.Answers.length;
+                var index= shuffleQuestions(myelem);
+                var tempElem='';
+                //$("div[id='newGameEasy']").css("background","url("+ triviaJSON.Answers[index].image+")");
+                $('#newGameEasy').css("background-image",'url('+triviaJSON.Answers[index].image+')');
+                $('#newGameEasy').css("background-size","cover");
+                
+                
+                tempElem = document.createElement("a");
+                tempElem.href="javascript:checkAnswer('A',"+index+ ")";
+                tempElem.innerHTML=triviaJSON.Answers[index].optionA;
+                
+                $('#optionA').replaceWith(tempElem);
+                
+                tempElem = '';
+                tempElem = document.createElement("a");
+                tempElem.href="javascript:checkAnswer('B',"+index+ ")";
+                tempElem.innerHTML=triviaJSON.Answers[index].optionB;
+                
+                $('#optionB').replaceWith(tempElem);
+                
+                tempElem = '';
+                tempElem = document.createElement("a");
+                tempElem.href="javascript:checkAnswer('C',"+index+ ")";
+                tempElem.innerHTML=triviaJSON.Answers[index].optionC;
+                
+                $('#optionC').replaceWith(tempElem);
+                
+                tempElem = '';
+                tempElem = document.createElement("a");
+                tempElem.href="javascript:checkAnswer('D',"+index+ ")";
+                tempElem.innerHTML=triviaJSON.Answers[index].optionD;
+                
+                $('#optionD').replaceWith(tempElem);
+                
+                
+                
+            });
+            
+        </script>
+
+            
+        
+    </div>
+    
+    
+    
     </body>
 </html>

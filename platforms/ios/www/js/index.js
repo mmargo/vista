@@ -16,6 +16,16 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
+// Wait for PhoneGap to load
+
+
+
+document.addEventListener("deviceready", onDeviceReady, false);
+
+
+var triviaJSON = {"Answers": [ {"answer":"A", "question":"Picture1", "optionA":"Sao Paulo, Brazil", "optionB":"Manado, Indonesia", "optionC":"Vladivostok, Russia", "optionD":"Istanbul, Turkey"}]};
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -34,16 +44,61 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-    }//,
-    // Update DOM on a Received Event
-    //receivedEvent: function(id) {
-    //    var parentElement = document.getElementById(id);
-    //    var listeningElement = parentElement.querySelector('.listening');
-    //    var receivedElement = parentElement.querySelector('.received');
+        navigator.splashscreen.show();
 
-    //    listeningElement.setAttribute('style', 'display:none;');
-    //    receivedElement.setAttribute('style', 'display:block;');
-
-    //    console.log('Received Event: ' + id);
-    //}
+        setTimeout( function() {
+               navigator.splashscreen.hide(); }, 2000);
+    }
 };
+
+
+
+
+
+
+
+
+
+
+function shuffleQuestions(numElement) {
+    return Math.floor(Math.random() * (Number(numElement) -1 + 1));
+};
+
+
+
+function loadQuestion() {
+    var element = document.getElementById('question');
+    var elem = triviaJSON.Answers.length;
+    var tempElem;
+    
+    var index = shuffleQuestions(elem);
+    
+    element.innerHTML = triviaJSON.Answers[index].question;
+    element = document.getElementById('optionA');
+    
+    while (element.hasChildNodes())
+        element.removeChild(element.lastChild);
+    
+    tempElem = document.createElement("a");
+    tempElem.href="javascript:checkAnswer('A'," + index + ")";
+    tempElem.innerHTML=triviaJSON.Answers[index].optionA;
+    element.appendChild(tempElem);
+    
+    element = document.getElementById('optionB');
+    while (element.hasChildNodes())
+        element.removeChild(element.lastChild);
+    tempElem = document.createElement("a");
+    tempElem.href="javascript:checkAnswer('B'," + index + ")";
+    tempElem.innerHTML=triviaJSON.Answers[index].optionB;
+    element.appendChild(tempElem);
+    
+};
+
+function checkAnswer(answer, questionIndex){
+    console.log("answer = " + answer);
+    console.log("question = " + questionIndex);
+    if (triviaJSON.Answers[Number(questionIndex)].answer == answer)
+        alert("Correct!");
+    else
+        alert("Incorrect :(");
+}

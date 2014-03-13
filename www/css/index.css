@@ -113,3 +113,7 @@ h1 {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
 }
+
+.ui-listview {
+    background: rgba(0,0,0,0.2);
+}

@@ -14,3 +14,36 @@ objc[6286]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.ap
 2014-03-10 22:03:55.996 VistaPoint[6286:80b] Finished load of: file:///Users/margom/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/1B444A00-E64E-4A8D-88C3-25387C307CB7/VistaPoint.app/www/index.html
 2014-03-10 22:04:05.116 VistaPoint[6286:80b] Camera.getPicture: source type 1 not available.
 2014-03-10 22:04:08.318 VistaPoint[6286:80b] THREAD WARNING: ['Camera'] took '3204.406982' ms. Plugin should use a background thread.
+objc[10110]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-11 00:58:59.104 VistaPoint[10110:80b] Cannot find executable for CFBundle 0xa794930 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-11 00:58:59.135 VistaPoint[10110:80b] Cannot find executable for CFBundle 0xa679a60 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-11 00:58:59.220 VistaPoint[10110:80b] Multi-tasking -> Device: YES, App: YES
+2014-03-11 00:58:59.255 VistaPoint[10110:80b] [CDVTimer][file] 0.818014ms
+2014-03-11 00:58:59.256 VistaPoint[10110:80b] [CDVTimer][TotalPluginStartup] 1.405954ms
+2014-03-11 00:58:59.412 VistaPoint[10110:80b] Resetting plugins due to page load.
+2014-03-11 00:58:59.783 VistaPoint[10110:80b] Finished load of: file:///Users/margom/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/1B444A00-E64E-4A8D-88C3-25387C307CB7/VistaPoint.app/www/index.html
+objc[10605]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-11 01:08:37.425 VistaPoint[10605:80b] Cannot find executable for CFBundle 0xa459770 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-11 01:08:37.442 VistaPoint[10605:80b] Cannot find executable for CFBundle 0xa53e280 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-11 01:08:37.500 VistaPoint[10605:80b] Multi-tasking -> Device: YES, App: YES
+2014-03-11 01:08:37.534 VistaPoint[10605:80b] [CDVTimer][file] 0.533998ms
+2014-03-11 01:08:37.534 VistaPoint[10605:80b] [CDVTimer][TotalPluginStartup] 0.998974ms
+2014-03-11 01:08:37.750 VistaPoint[10605:80b] Resetting plugins due to page load.
+2014-03-11 01:08:37.987 VistaPoint[10605:80b] Finished load of: file:///Users/margom/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/1B444A00-E64E-4A8D-88C3-25387C307CB7/VistaPoint.app/www/index.html
+objc[3041]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-13 02:13:24.292 VistaPoint[3041:80b] Cannot find executable for CFBundle 0xa68da10 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-13 02:13:24.311 VistaPoint[3041:80b] Cannot find executable for CFBundle 0xa6d3cc0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-13 02:13:24.418 VistaPoint[3041:80b] Multi-tasking -> Device: YES, App: YES
+2014-03-13 02:13:24.581 VistaPoint[3041:80b] [CDVTimer][file] 0.798047ms
+2014-03-13 02:13:24.581 VistaPoint[3041:80b] [CDVTimer][TotalPluginStartup] 1.367986ms
+2014-03-13 02:13:24.825 VistaPoint[3041:80b] Resetting plugins due to page load.
+2014-03-13 02:13:25.136 VistaPoint[3041:80b] Finished load of: file:///Users/margom/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/1B444A00-E64E-4A8D-88C3-25387C307CB7/VistaPoint.app/www/index.html
+Terminating in response to SpringBoard's termination.
+objc[3743]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-13 02:27:35.477 VistaPoint[3743:80b] Cannot find executable for CFBundle 0xa7aae10 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-13 02:27:35.493 VistaPoint[3743:80b] Cannot find executable for CFBundle 0xa7dc7f0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-13 02:27:35.641 VistaPoint[3743:80b] Multi-tasking -> Device: YES, App: YES
+2014-03-13 02:27:35.689 VistaPoint[3743:80b] [CDVTimer][file] 0.799954ms
+2014-03-13 02:27:35.691 VistaPoint[3743:80b] [CDVTimer][TotalPluginStartup] 2.790987ms
+2014-03-13 02:27:35.826 VistaPoint[3743:80b] Resetting plugins due to page load.
+2014-03-13 02:27:36.020 VistaPoint[3743:80b] Finished load of: file:///Users/margom/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/1B444A00-E64E-4A8D-88C3-25387C307CB7/VistaPoint.app/www/index.html
