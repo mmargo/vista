@@ -24,29 +24,27 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 
 
-var triviaJSON = {"Answers": [ {"answer":"A", "question":"Picture1", "optionA":"Sao Paulo, Brazil", "optionB":"Manado, Indonesia", "optionC":"Vladivostok, Russia", "optionD":"Istanbul, Turkey"}]};
-
 var app = {
     // Application Constructor
-    initialize: function() {
+    initialize: function () {
         this.bindEvents();
     },
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
+    bindEvents: function () {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
+    onDeviceReady: function () {
         app.receivedEvent('deviceready');
         navigator.splashscreen.show();
 
-        setTimeout( function() {
+        setTimeout(function () {
                navigator.splashscreen.hide(); }, 2000);
     }
 };
@@ -61,27 +59,27 @@ var app = {
 
 
 function shuffleQuestions(numElement) {
-    return Math.floor(Math.random() * (Number(numElement) -1 + 1));
-};
+    return Math.floor(Math.random() * (Number(numElement) - 1 + 1));
+} 
 
 
 
 function loadQuestion() {
-    var element = document.getElementById('question');
-    var elem = triviaJSON.Answers.length;
-    var tempElem;
-    
-    var index = shuffleQuestions(elem);
+    var element = document.getElementById('question'), 
+        elem = triviaJSON.Answers.length,
+        tempElem,
+        index = shuffleQuestions(elem);
     
     element.innerHTML = triviaJSON.Answers[index].question;
     element = document.getElementById('optionA');
     
-    while (element.hasChildNodes())
+    while (element.hasChildNodes()){
         element.removeChild(element.lastChild);
+    }
     
     tempElem = document.createElement("a");
     tempElem.href="javascript:checkAnswer('A'," + index + ")";
-    tempElem.innerHTML=triviaJSON.Answers[index].optionA;
+    tempElem.innerHTML = triviaJSON.Answers[index].optionA;
     element.appendChild(tempElem);
     
     element = document.getElementById('optionB');
@@ -92,13 +90,41 @@ function loadQuestion() {
     tempElem.innerHTML=triviaJSON.Answers[index].optionB;
     element.appendChild(tempElem);
     
-};
+}
 
-function checkAnswer(answer, questionIndex){
-    console.log("answer = " + answer);
-    console.log("question = " + questionIndex);
-    if (triviaJSON.Answers[Number(questionIndex)].answer == answer)
+function checkAnswer(answer, questionIndex) {
+    //console.log("answer = " + answer);
+    //console.log("question = " + questionIndex);
+    var nextPage = Number(questionIndex) + 2;
+    if (triviaJSON.Answers[Number(questionIndex)].answer == answer){
         alert("Correct!");
-    else
+        
+        var localTS = Number(localStorage.TS);
+        console.log("prev TS: " + localTS);
+        localStorage.TS=Number(localTS)+1;
+        
+        $(':mobile-pagecontainer').pagecontainer('change','#gamePage'+nextPage, {
+            transition : 'flip',
+            changeHash : false, 
+            reverse : true,
+            showLoadMsg : true,
+            reload : true
+        });
+
+        
+    }
+    else{
         alert("Incorrect :(");
+        
+        $(':mobile-pagecontainer').pagecontainer('change','#gamePage'+nextPage, {
+            transition : 'flip',
+            changeHash : false, 
+            reverse : true,
+            showLoadMsg : true,
+            reload : true
+        });
+    }
+    
+    
+    
 }

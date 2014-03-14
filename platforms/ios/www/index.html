@@ -68,7 +68,7 @@
             <h3>Vista Point</h3>
             <div data-controltype="textblock">
               <p>
-            	My Score:
+            	My Last Score:
               </p>
             </div>
             
@@ -110,71 +110,428 @@
             <a data-role="button" href="#pageLanding" class="ui-btn-left">Back</a>
             <h3>Question 1 of 6</h3>
         </div>
-        
-        <script>
-            var totalScore = 0;
-        </script>
          
-
-        <footer data-role="footer" data-id="ansFooter" data-position="fixed">
+        <div data-role="content">
             <ul data-role="listview" data-autodividers="false" data-filter="false">
                 <li><div id="optionA"></div></li>
                 <li><div id="optionB"></div></li>
                 <li><div id="optionC"></div></li>
                 <li><div id="optionD"></div></li>
                 
-            </ul>
+            </ul>    
+            
+            
+        </div>
 
-        </footer>
         <script>
             
-            $('#newGameEasy').on('pageinit', function() {
+            $('#newGameEasy').on('pagecreate', function() {
                 var myelem = triviaJSON.Answers.length;
-                var index= shuffleQuestions(myelem);
+                var gIndex= 0;
                 var tempElem='';
-                //$("div[id='newGameEasy']").css("background","url("+ triviaJSON.Answers[index].image+")");
-                $('#newGameEasy').css("background-image",'url('+triviaJSON.Answers[index].image+')');
+                
+                var totalScore = 0;
+                localStorage.TS = totalScore;
+                $('#newGameEasy').css("background-image",'url('+triviaJSON.Answers[gIndex].image+')');
                 $('#newGameEasy').css("background-size","cover");
                 
                 
                 tempElem = document.createElement("a");
-                tempElem.href="javascript:checkAnswer('A',"+index+ ")";
-                tempElem.innerHTML=triviaJSON.Answers[index].optionA;
+                tempElem.href="javascript:checkAnswer('A',"+gIndex+ ")";
+                tempElem.innerHTML=triviaJSON.Answers[gIndex].optionA;
                 
-                $('#optionA').replaceWith(tempElem);
-                
-                tempElem = '';
-                tempElem = document.createElement("a");
-                tempElem.href="javascript:checkAnswer('B',"+index+ ")";
-                tempElem.innerHTML=triviaJSON.Answers[index].optionB;
-                
-                $('#optionB').replaceWith(tempElem);
+                $('#newGameEasy #optionA').replaceWith(tempElem);
                 
                 tempElem = '';
                 tempElem = document.createElement("a");
-                tempElem.href="javascript:checkAnswer('C',"+index+ ")";
-                tempElem.innerHTML=triviaJSON.Answers[index].optionC;
+                tempElem.href="javascript:checkAnswer('B',"+gIndex+ ")";
+                tempElem.innerHTML=triviaJSON.Answers[gIndex].optionB;
                 
-                $('#optionC').replaceWith(tempElem);
+                $('#newGameEasy #optionB').replaceWith(tempElem);
                 
                 tempElem = '';
                 tempElem = document.createElement("a");
-                tempElem.href="javascript:checkAnswer('D',"+index+ ")";
-                tempElem.innerHTML=triviaJSON.Answers[index].optionD;
+                tempElem.href="javascript:checkAnswer('C',"+gIndex+ ")";
+                tempElem.innerHTML=triviaJSON.Answers[gIndex].optionC;
                 
-                $('#optionD').replaceWith(tempElem);
+                $('#newGameEasy #optionC').replaceWith(tempElem);
+                
+                tempElem = '';
+                tempElem = document.createElement("a");
+                tempElem.href="javascript:checkAnswer('D',"+gIndex+ ")";
+                tempElem.innerHTML=triviaJSON.Answers[gIndex].optionD;
+                
+                $('#newGameEasy #optionD').replaceWith(tempElem);
                 
                 
                 
             });
             
         </script>
+        </div>
+        
+    
+    <!-- GamePage2 -->
+        <div data-role="page" data-control-title="gamePage2" data-theme="b" id="gamePage2">
+            
+        <div data-theme="b" data-role="header">
+            <a data-role="button" href="#pageLanding" class="ui-btn-left">Back</a>
+            <h3>Question 2 of 6</h3>
+        </div>
+        
+         
+        <div data-role="content">
+            <ul data-role="listview" data-autodividers="false" data-filter="false">
+                <li><div id="optionA"></div></li>
+                <li><div id="optionB"></div></li>
+                <li><div id="optionC"></div></li>
+                <li><div id="optionD"></div></li>
+                
+            </ul>    
+            
+            
+        </div>
+
+        <script>
+            
+            $('#gamePage2').on('pagecreate', function() {
+                var myelem = triviaJSON.Answers.length,
+                gIndex= 1,
+                tempElem='';
+                
+                $('#gamePage2').css("background-image",'url('+triviaJSON.Answers[gIndex].image+')');
+                $('#gamePage2').css("background-size","cover");
+                
+                tempElem = document.createElement("a");
+                tempElem.href="javascript:checkAnswer('A',"+gIndex+ ")";
+                tempElem.innerHTML=triviaJSON.Answers[gIndex].optionA;
+                $('#gamePage2 #optionA').replaceWith(tempElem);
+                
+                tempElem = '';
+                tempElem = document.createElement("a");
+                tempElem.href="javascript:checkAnswer('B',"+gIndex+ ")";
+                tempElem.innerHTML=triviaJSON.Answers[gIndex].optionB;
+                $('#gamePage2 #optionB').replaceWith(tempElem);
+                
+                tempElem = '';
+                tempElem = document.createElement("a");
+                tempElem.href="javascript:checkAnswer('C',"+gIndex+ ")";
+                tempElem.innerHTML=triviaJSON.Answers[gIndex].optionC;
+                $('#gamePage2 #optionC').replaceWith(tempElem);
+                
+                tempElem = '';
+                tempElem = document.createElement("a");
+                tempElem.href="javascript:checkAnswer('D',"+gIndex+ ")";
+                tempElem.innerHTML=triviaJSON.Answers[gIndex].optionD;
+                $('#gamePage2 #optionD').replaceWith(tempElem);
+                
+                
+                
+            });
+            
+                
+
+        </script>
+        </div>
+    
+        
+    <!-- GamePage3 -->
+        <div data-role="page" data-control-title="gamePage3" data-theme="b" id="gamePage3">
+            
+        <div data-theme="b" data-role="header">
+            <a data-role="button" href="#pageLanding" class="ui-btn-left">Back</a>
+            <h3>Question 3 of 6</h3>
+        </div>
+        
+         
+        <div data-role="content">
+            <ul data-role="listview" data-autodividers="false" data-filter="false">
+                <li><div id="optionA"></div></li>
+                <li><div id="optionB"></div></li>
+                <li><div id="optionC"></div></li>
+                <li><div id="optionD"></div></li>
+                
+            </ul>    
+            
+            
+        </div>
+
+        <script>
+            
+            $('#gamePage3').on('pagecreate', function() {
+                var myelem = triviaJSON.Answers.length,
+                gIndex= 2,
+                tempElem='';
+                
+                $('#gamePage3').css("background-image",'url('+triviaJSON.Answers[gIndex].image+')');
+                $('#gamePage3').css("background-size","cover");
+                
+                tempElem = document.createElement("a");
+                tempElem.href="javascript:checkAnswer('A',"+gIndex+ ")";
+                tempElem.innerHTML=triviaJSON.Answers[gIndex].optionA;
+                $('#gamePage3 #optionA').replaceWith(tempElem);
+                
+                tempElem = '';
+                tempElem = document.createElement("a");
+                tempElem.href="javascript:checkAnswer('B',"+gIndex+ ")";
+                tempElem.innerHTML=triviaJSON.Answers[gIndex].optionB;
+                $('#gamePage3 #optionB').replaceWith(tempElem);
+                
+                tempElem = '';
+                tempElem = document.createElement("a");
+                tempElem.href="javascript:checkAnswer('C',"+gIndex+ ")";
+                tempElem.innerHTML=triviaJSON.Answers[gIndex].optionC;
+                $('#gamePage3 #optionC').replaceWith(tempElem);
+                
+                tempElem = '';
+                tempElem = document.createElement("a");
+                tempElem.href="javascript:checkAnswer('D',"+gIndex+ ")";
+                tempElem.innerHTML=triviaJSON.Answers[gIndex].optionD;
+                $('#gamePage3 #optionD').replaceWith(tempElem);
+                
+                
+                
+            });
+            
+                
+
+        </script>
+        </div>
+        
+        
+        
+    <!-- GamePage4 -->
+        <div data-role="page" data-control-title="gamePage4" data-theme="b" id="gamePage4">
+            
+        <div data-theme="b" data-role="header">
+            <a data-role="button" href="#pageLanding" class="ui-btn-left">Back</a>
+            <h3>Question 4 of 6</h3>
+        </div>
+        
+         
+        <div data-role="content">
+            <ul data-role="listview" data-autodividers="false" data-filter="false">
+                <li><div id="optionA"></div></li>
+                <li><div id="optionB"></div></li>
+                <li><div id="optionC"></div></li>
+                <li><div id="optionD"></div></li>
+                
+            </ul>    
+            
+            
+        </div>
+
+        <script>
+            
+            $('#gamePage4').on('pagecreate', function() {
+                var myelem = triviaJSON.Answers.length,
+                gIndex= 3,
+                tempElem='';
+                
+                $('#gamePage4').css("background-image",'url('+triviaJSON.Answers[gIndex].image+')');
+                $('#gamePage4').css("background-size","cover");
+                
+                tempElem = document.createElement("a");
+                tempElem.href="javascript:checkAnswer('A',"+gIndex+ ")";
+                tempElem.innerHTML=triviaJSON.Answers[gIndex].optionA;
+                $('#gamePage4 #optionA').replaceWith(tempElem);
+                
+                tempElem = '';
+                tempElem = document.createElement("a");
+                tempElem.href="javascript:checkAnswer('B',"+gIndex+ ")";
+                tempElem.innerHTML=triviaJSON.Answers[gIndex].optionB;
+                $('#gamePage4 #optionB').replaceWith(tempElem);
+                
+                tempElem = '';
+                tempElem = document.createElement("a");
+                tempElem.href="javascript:checkAnswer('C',"+gIndex+ ")";
+                tempElem.innerHTML=triviaJSON.Answers[gIndex].optionC;
+                $('#gamePage4 #optionC').replaceWith(tempElem);
+                
+                tempElem = '';
+                tempElem = document.createElement("a");
+                tempElem.href="javascript:checkAnswer('D',"+gIndex+ ")";
+                tempElem.innerHTML=triviaJSON.Answers[gIndex].optionD;
+                $('#gamePage4 #optionD').replaceWith(tempElem);
+                
+                
+                
+            });
+            
+                
+
+        </script>
+        </div>
+        
+        <!-- GamePage5 -->
+        <div data-role="page" data-control-title="gamePage5" data-theme="b" id="gamePage5">
+            
+        <div data-theme="b" data-role="header">
+            <a data-role="button" href="#pageLanding" class="ui-btn-left">Back</a>
+            <h3>Question 5 of 6</h3>
+        </div>
+        
+         
+        <div data-role="content">
+            <ul data-role="listview" data-autodividers="false" data-filter="false">
+                <li><div id="optionA"></div></li>
+                <li><div id="optionB"></div></li>
+                <li><div id="optionC"></div></li>
+                <li><div id="optionD"></div></li>
+                
+            </ul>    
+            
+            
+        </div>
+
+        <script>
+            
+            $('#gamePage5').on('pagecreate', function() {
+                var myelem = triviaJSON.Answers.length,
+                gIndex= 4,
+                tempElem='';
+                
+                $('#gamePage5').css("background-image",'url('+triviaJSON.Answers[gIndex].image+')');
+                $('#gamePage5').css("background-size","cover");
+                
+                tempElem = document.createElement("a");
+                tempElem.href="javascript:checkAnswer('A',"+gIndex+ ")";
+                tempElem.innerHTML=triviaJSON.Answers[gIndex].optionA;
+                $('#gamePage5 #optionA').replaceWith(tempElem);
+                
+                tempElem = '';
+                tempElem = document.createElement("a");
+                tempElem.href="javascript:checkAnswer('B',"+gIndex+ ")";
+                tempElem.innerHTML=triviaJSON.Answers[gIndex].optionB;
+                $('#gamePage5 #optionB').replaceWith(tempElem);
+                
+                tempElem = '';
+                tempElem = document.createElement("a");
+                tempElem.href="javascript:checkAnswer('C',"+gIndex+ ")";
+                tempElem.innerHTML=triviaJSON.Answers[gIndex].optionC;
+                $('#gamePage5 #optionC').replaceWith(tempElem);
+                
+                tempElem = '';
+                tempElem = document.createElement("a");
+                tempElem.href="javascript:checkAnswer('D',"+gIndex+ ")";
+                tempElem.innerHTML=triviaJSON.Answers[gIndex].optionD;
+                $('#gamePage5 #optionD').replaceWith(tempElem);
+                
+                
+                
+            });
+            
+                
+
+        </script>
 
             
         
-    </div>
+        </div>
     
-    
+        
+        <!-- GamePage6 -->
+        <div data-role="page" data-control-title="gamePage6" data-theme="b" id="gamePage6">
+            
+        <div data-theme="b" data-role="header">
+            <a data-role="button" href="#pageLanding" class="ui-btn-left">Back</a>
+            <h3>Question 6 of 6</h3>
+        </div>
+        
+         
+        <div data-role="content">
+            <ul data-role="listview" data-autodividers="false" data-filter="false">
+                <li><div id="optionA"></div></li>
+                <li><div id="optionB"></div></li>
+                <li><div id="optionC"></div></li>
+                <li><div id="optionD"></div></li>
+                
+            </ul>    
+            
+            
+        </div>
+
+        <script>
+            
+            $('#gamePage6').on('pagecreate', function() {
+                var myelem = triviaJSON.Answers.length,
+                gIndex= 5,
+                tempElem='';
+                
+                $('#gamePage6').css("background-image",'url('+triviaJSON.Answers[gIndex].image+')');
+                $('#gamePage6').css("background-size","cover");
+                
+                tempElem = document.createElement("a");
+                tempElem.href="javascript:checkAnswer('A',"+gIndex+ ")";
+                tempElem.innerHTML=triviaJSON.Answers[gIndex].optionA;
+                $('#gamePage6 #optionA').replaceWith(tempElem);
+                
+                tempElem = '';
+                tempElem = document.createElement("a");
+                tempElem.href="javascript:checkAnswer('B',"+gIndex+ ")";
+                tempElem.innerHTML=triviaJSON.Answers[gIndex].optionB;
+                $('#gamePage6 #optionB').replaceWith(tempElem);
+                
+                tempElem = '';
+                tempElem = document.createElement("a");
+                tempElem.href="javascript:checkAnswer('C',"+gIndex+ ")";
+                tempElem.innerHTML=triviaJSON.Answers[gIndex].optionC;
+                $('#gamePage6 #optionC').replaceWith(tempElem);
+                
+                tempElem = '';
+                tempElem = document.createElement("a");
+                tempElem.href="javascript:checkAnswer('D',"+gIndex+ ")";
+                tempElem.innerHTML=triviaJSON.Answers[gIndex].optionD;
+                $('#gamePage6 #optionD').replaceWith(tempElem);
+                
+                
+                
+            });
+            
+                
+
+        </script>
+
+            
+        
+        </div>
+        
+        <!-- GamePage7 or Summary page  -->
+        <div data-role="page" data-control-title="gamePage7" data-theme="b" id="gamePage7">
+            
+        <div data-theme="b" data-role="header">
+            <a data-role="button" href="#pageLanding" class="ui-btn-left">Back</a>
+            <h3>Summary</h3>
+        </div>
+        
+         
+        <div data-role="content">
+            Congratulations. Your score is: 
+            <h2><div id="TotalScoreDiv"></div></h2>
+            
+            
+            <p>Want to try a harder challenge?</p>
+            <ul data-role="listview" data-autodividers="false" data-filter="false">
+                <li><a href="#newGameHard"><h1>New Hard Game</h1></a></li>
+            </ul>
+            
+            
+        </div>
+
+        
+        <script>
+            $('#gamePage7').on('pagecreate', function() {
+                var TS= localStorage.TS;
+                console.log('final tally: '  + TS);
+                $('#gamePage7 #TotalScoreDiv').replaceWith(TS);
+            
+            });
+            
+        </script>
+
+            
+        
+        </div>
     
     </body>
 </html>
