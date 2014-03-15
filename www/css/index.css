@@ -114,6 +114,10 @@ h1 {
     -webkit-animation:fade 3000ms infinite;
 }
 
-.ui-listview {
-    background: rgba(0,0,0,0.2);
+
+
+.ui-li-static {
+    background-color: transparent !important;
+    background-image: url('') !important;
+    opacity:1;
 }

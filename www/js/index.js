@@ -50,53 +50,11 @@ var app = {
 };
 
 
-
-
-
-
-
-
-
-
-function shuffleQuestions(numElement) {
-    return Math.floor(Math.random() * (Number(numElement) - 1 + 1));
-} 
-
-
-
-function loadQuestion() {
-    var element = document.getElementById('question'), 
-        elem = triviaJSON.Answers.length,
-        tempElem,
-        index = shuffleQuestions(elem);
-    
-    element.innerHTML = triviaJSON.Answers[index].question;
-    element = document.getElementById('optionA');
-    
-    while (element.hasChildNodes()){
-        element.removeChild(element.lastChild);
-    }
-    
-    tempElem = document.createElement("a");
-    tempElem.href="javascript:checkAnswer('A'," + index + ")";
-    tempElem.innerHTML = triviaJSON.Answers[index].optionA;
-    element.appendChild(tempElem);
-    
-    element = document.getElementById('optionB');
-    while (element.hasChildNodes())
-        element.removeChild(element.lastChild);
-    tempElem = document.createElement("a");
-    tempElem.href="javascript:checkAnswer('B'," + index + ")";
-    tempElem.innerHTML=triviaJSON.Answers[index].optionB;
-    element.appendChild(tempElem);
-    
-}
-
 function checkAnswer(answer, questionIndex) {
     //console.log("answer = " + answer);
     //console.log("question = " + questionIndex);
     var nextPage = Number(questionIndex) + 2;
-    if (triviaJSON.Answers[Number(questionIndex)].answer == answer){
+    if (triviaJSON.Easy[Number(questionIndex)].answer == answer){
         alert("Correct!");
         
         var localTS = Number(localStorage.TS);
@@ -128,3 +86,45 @@ function checkAnswer(answer, questionIndex) {
     
     
 }
+
+
+
+function checkAnswerH(answer, questionIndex) {
+    //console.log("answer = " + answer);
+    //console.log("question = " + questionIndex);
+    var nextPage = Number(questionIndex) + 2;
+    if (triviaJSON.Hard[Number(questionIndex)].answer == answer){
+        alert("Correct!");
+        
+        var localTS = Number(localStorage.TS);
+        console.log("prev TS: " + localTS);
+        localStorage.TS=Number(localTS)+1;
+        console.log("after update TS: " +localStorage.TS);
+        
+        $(':mobile-pagecontainer').pagecontainer('change','#gamePageH'+nextPage, {
+            transition : 'flip',
+            changeHash : false, 
+            reverse : true,
+            showLoadMsg : true,
+            reload : true
+        });
+
+        
+    }
+    else{
+        alert("Incorrect :(");
+        
+        $(':mobile-pagecontainer').pagecontainer('change','#gamePageH'+nextPage, {
+            transition : 'flip',
+            changeHash : false, 
+            reverse : true,
+            showLoadMsg : true,
+            reload : true
+        });
+    }
+    
+    
+    
+}
+
+
