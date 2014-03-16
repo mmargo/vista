@@ -103,10 +103,66 @@
         <div data-role="content">
         <p>Welcome to my simple app to explore the ever shrinking planet earth. I have prepared a sample of wonderful photographs courtesy of Microsoft Bing for you to enjoy. To play simply view the photograph and choose the location where the photograph was taken.</p> 
         
+        <p>There are two difficulty levels: Easy and Hard. The Hard level asks you to match the country flag with the background scenery.</p>
+            
+        <p>Tip: Shake your mobile device to reset your current game</p>
+            
+        
         <p>Written by Martin Margo in 2014</p>
            
         </div>
+        
+        <div id="accelerometer">Waiting for accelerometer</div>
+        <button onclick="stopWatch();">Stop Watching</button>
+
+        
+        <script>
             
+            var watchID = null;
+
+            // Start watching the acceleration
+            //
+            function startWatch() {
+
+                // Update acceleration every 3 seconds
+                var options = { frequency: 3000 };
+
+                watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
+            }
+
+            // Stop watching the acceleration
+            //
+            function stopWatch() {
+                if (watchID) {
+                    navigator.accelerometer.clearWatch(watchID);
+                    watchID = null;
+                }
+            }
+
+            // onSuccess: Get a snapshot of the current acceleration
+            //
+            function onSuccess(acceleration) {
+                var element = document.getElementById('accelerometer');
+                element.innerHTML = 'Acceleration X: ' + acceleration.x + '<br />' +
+                                    'Acceleration Y: ' + acceleration.y + '<br />' +
+                                    'Acceleration Z: ' + acceleration.z + '<br />' +
+                                    'Timestamp: '      + acceleration.timestamp + '<br />';
+            }
+
+            // onError: Failed to get the acceleration
+            //
+            function onError() {
+                alert('onError!');
+            }
+
+
+            $('#pageHelp').on('pageshow', function() {
+                startWatch();
+                
+            });
+            
+        
+        </script>
     </div>
     
     
