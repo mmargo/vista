@@ -30,13 +30,24 @@
         <link rel="stylesheet" href="css/jquery.mobile-1.4.2.css" />
         <script type="text/javascript" src="js/jquery.mobile-1.4.2.min.js"></script>
         <link rel="stylesheet" type="text/css" href="css/index.css" />
+        
+        
+        <!-- Add JQPlot Plugin -->
+        <script language="javascript" type="text/javascript" src="js/jquery.jqplot.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/jquery.jqplot.css" />
+        <script type="text/javascript" src="js/jqplot.barRenderer.min.js"></script>
+        <script type="text/javascript" src="js/jqplot.categoryAxisRenderer.min.js"></script>
+<script type="text/javascript" src="js/jqplot.pointLabels.min.js"></script>
+        
+        
+        
         <title>VistaPoint</title>
         
         <script>
         var triviaJSON = {"Easy": [ 
             {"answer":"A", "image":"img/bg/Australia.jpg", "optionA":"Australia", "optionB":"New Zealand", "optionC":"Germany", "optionD":"Canada"}, 
             {"answer":"D", "image":"img/bg/Bali.jpg", "optionA":"Vietnam", "optionB":"Thailand", "optionC":"China", "optionD":"Indonesia"},
-            {"answer":"C", "image":"img/bg/Stonehenge.jpg","optionA":"Mexico","optionB":"Brazil","optionC":"England","optionD":"Switzerland"},
+            {"answer":"C", "image":"img/bg/Stonehenge.jpg","optionA":"Mexico","optionB":"Brazil","optionC":"United Kingdom","optionD":"Switzerland"},
             {"answer":"C", "image":"img/bg/China.jpg","optionA":"Hong Kong","optionB":"Taiwan","optionC":"China","optionD":"Nepal"},
             {"answer":"C", "image":"img/bg/Egypt.jpg","optionA":"Israel","optionB":"Greece","optionC":"Egypt","optionD":"South Africa"},
             {"answer":"A", "image":"img/bg/Japan.jpg","optionA":"Japan","optionB":"Korea","optionC":"China","optionD":"Malaysia"}], 
@@ -51,6 +62,7 @@
             
         </script>
         
+      
         
     </head>
     <body>
@@ -101,7 +113,7 @@
             <h3>Help</h3>
         </div>
         <div data-role="content">
-        <p>Welcome to my simple app to explore the ever shrinking planet earth. I have prepared a sample of wonderful photographs courtesy of Microsoft Bing for you to enjoy. To play simply view the photograph and choose the location where the photograph was taken.</p> 
+        <p>Welcome to my simple app to explore the ever shrinking planet earth. I have prepared a sample of wonderful photographs for you to enjoy. To play simply view the photograph and choose the location where the photograph was taken.</p> 
         
         <p>There are two difficulty levels: Easy and Hard. The Hard level asks you to match the country flag with the background scenery.</p>
             
@@ -112,70 +124,21 @@
            
         </div>
         
-        <div id="accelerometer">Waiting for accelerometer</div>
-        <button onclick="stopWatch();">Stop Watching</button>
 
-        
-        <script>
-            
-            var watchID = null;
-
-            // Start watching the acceleration
-            //
-            function startWatch() {
-
-                // Update acceleration every 3 seconds
-                var options = { frequency: 3000 };
-
-                watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
-            }
-
-            // Stop watching the acceleration
-            //
-            function stopWatch() {
-                if (watchID) {
-                    navigator.accelerometer.clearWatch(watchID);
-                    watchID = null;
-                }
-            }
-
-            // onSuccess: Get a snapshot of the current acceleration
-            //
-            function onSuccess(acceleration) {
-                var element = document.getElementById('accelerometer');
-                element.innerHTML = 'Acceleration X: ' + acceleration.x + '<br />' +
-                                    'Acceleration Y: ' + acceleration.y + '<br />' +
-                                    'Acceleration Z: ' + acceleration.z + '<br />' +
-                                    'Timestamp: '      + acceleration.timestamp + '<br />';
-            }
-
-            // onError: Failed to get the acceleration
-            //
-            function onError() {
-                alert('onError!');
-            }
-
-
-            $('#pageHelp').on('pageshow', function() {
-                startWatch();
-                
-            });
-            
-        
-        </script>
     </div>
     
     
      <!-- newGameEasy page -->
+        
         <div data-role="page" data-control-title="New Game" data-theme="b" id="newGameEasy">
             
         <div data-theme="b" data-role="header">
-            <a data-role="button" href="#pageLanding" class="ui-btn-left">Back</a>
+            
             <h3>Question 1 of 6</h3>
         </div>
          
         <div data-role="content">
-            <ul data-role="listview" data-autodividers="false" data-filter="false">
+            <ul data-role="listview" data-autodividers="false" data-filter="false" >
                 <li><div id="optionA"></div></li>
                 <li><div id="optionB"></div></li>
                 <li><div id="optionC"></div></li>
@@ -189,7 +152,10 @@
         <script>
             
             $('#newGameEasy').on('pageshow', function() {
-               
+                
+                stopWatch();
+                startWatch('easy');
+                
                 var gIndex= 0;
                 var tempElem='';
                 
@@ -198,6 +164,9 @@
                 $('#newGameEasy').css("background-image",'url('+triviaJSON.Easy[gIndex].image+')');
                 $('#newGameEasy').css("background-size","cover");
                 
+                           
+                
+        
                 
                 tempElem = document.createElement("a");
                 tempElem.href="javascript:checkAnswer('A',"+gIndex+ ")";
@@ -226,7 +195,7 @@
                 
                 $('#newGameEasy #optionD').replaceWith(tempElem);
                 
-                
+               
                 
             });
             
@@ -238,13 +207,12 @@
         <div data-role="page" data-control-title="gamePage2" data-theme="b" id="gamePage2">
             
         <div data-theme="b" data-role="header">
-            <a data-role="button" href="#pageLanding" class="ui-btn-left">Back</a>
             <h3>Question 2 of 6</h3>
         </div>
         
          
         <div data-role="content">
-            <ul data-role="listview" data-autodividers="false" data-filter="false">
+            <ul data-role="listview" data-autodividers="false" data-filter="false" >
                 <li><div id="optionA"></div></li>
                 <li><div id="optionB"></div></li>
                 <li><div id="optionC"></div></li>
@@ -256,6 +224,8 @@
         </div>
 
         <script>
+            
+              
             
             $('#gamePage2').on('pageshow', function() {
                 
@@ -302,7 +272,6 @@
         <div data-role="page" data-control-title="gamePage3" data-theme="b" id="gamePage3">
             
         <div data-theme="b" data-role="header">
-            <a data-role="button" href="#pageLanding" class="ui-btn-left">Back</a>
             <h3>Question 3 of 6</h3>
         </div>
         
@@ -322,6 +291,7 @@
         <script>
             
             $('#gamePage3').on('pageshow', function() {
+                
                 var gIndex= 2,
                 tempElem='';
                 
@@ -366,7 +336,6 @@
         <div data-role="page" data-control-title="gamePage4" data-theme="b" id="gamePage4">
             
         <div data-theme="b" data-role="header">
-            <a data-role="button" href="#pageLanding" class="ui-btn-left">Back</a>
             <h3>Question 4 of 6</h3>
         </div>
         
@@ -386,7 +355,7 @@
         <script>
             
             $('#gamePage4').on('pageshow', function() {
-
+               
                 var gIndex= 3,
                 tempElem='';
                 
@@ -416,7 +385,7 @@
                 tempElem.innerHTML=triviaJSON.Easy[gIndex].optionD;
                 $('#gamePage4 #optionD').replaceWith(tempElem);
                 
-                
+               
                 
             });
             
@@ -429,7 +398,6 @@
         <div data-role="page" data-control-title="gamePage5" data-theme="b" id="gamePage5">
             
         <div data-theme="b" data-role="header">
-            <a data-role="button" href="#pageLanding" class="ui-btn-left">Back</a>
             <h3>Question 5 of 6</h3>
         </div>
         
@@ -496,7 +464,6 @@
         <div data-role="page" data-control-title="gamePage6" data-theme="b" id="gamePage6">
             
         <div data-theme="b" data-role="header">
-            <a data-role="button" href="#pageLanding" class="ui-btn-left">Back</a>
             <h3>Question 6 of 6</h3>
         </div>
         
@@ -516,7 +483,7 @@
         <script>
             
             $('#gamePage6').on('pageshow', function() {
-                
+               
                 var gIndex= 5,
                 tempElem='';
                 
@@ -546,7 +513,7 @@
                 tempElem.innerHTML=triviaJSON.Easy[gIndex].optionD;
                 $('#gamePage6 #optionD').replaceWith(tempElem);
                 
-                
+              
                 
             });
             
@@ -562,14 +529,16 @@
         <div data-role="page" data-control-title="gamePage7" data-theme="b" id="gamePage7">
             
         <div data-theme="b" data-role="header">
-            <a data-role="button" href="#pageLanding" class="ui-btn-left">Back</a>
             <h3>Summary</h3>
         </div>
         
          
         <div data-role="content">
-            Congratulations. Your score is: 
+            Your score is: 
             <h2><div id="TotalScoreDiv"></div></h2>
+            <div id="chartdiv" style="height:200px;width:300px; "></div>
+            
+            
             
             
             <p>Want to try a harder challenge?</p>
@@ -586,8 +555,30 @@
                 var TS= localStorage.TS;
                 console.log('final tally: '  + TS);
                 //$('#gamePage7 #TotalScoreDiv').replaceWith(TS);
-                $('#gamePage7 #TotalScoreDiv').html(TS);
+                $('#gamePage7 #TotalScoreDiv').html(TS + " out of " + triviaJSON.Easy.length);
             
+                var plot2 = $.jqplot('chartdiv', [
+                    [[TS,1]]], {
+                    seriesDefaults: {
+                        renderer:$.jqplot.BarRenderer,
+                        pointLabels: { show: true, location: 'e', edgeTolerance: -15 },
+                        shadowAngle: 135,
+                        // Here's where we tell the chart it is oriented horizontally.
+                        rendererOptions: {
+                            barDirection: 'horizontal'
+                        }
+                    },
+                    axes: {
+                        yaxis: {
+                            renderer: $.jqplot.CategoryAxisRenderer,
+                        },
+                        xaxis: {
+                            min: 0, max : triviaJSON.Easy.length
+                        }
+                    }
+                    });
+                
+                
             });
             
         </script>
@@ -598,12 +589,12 @@
         <div data-role="page" data-control-title="New Game" data-theme="b" id="newGameHard">
             
         <div data-theme="b" data-role="header">
-            <a data-role="button" href="#pageLanding" class="ui-btn-left">Back</a>
+            
             <h3>Question 1 of 6</h3>
         </div>
          
         <div data-role="content">
-            <ul data-role="listview" data-autodividers="false" data-filter="false">
+            <ul data-role="listview" data-autodividers="false" data-filter="false" id="hard">
                 <li><div id="optionA"></div></li>
                 <li><div id="optionB"></div></li>
                 <li><div id="optionC"></div></li>
@@ -617,7 +608,8 @@
         <script>
             
             $('#newGameHard').on('pageshow', function() {
-                
+                stopWatch();
+                startWatch('hard');
                 var gIndex= 0;
                 var tempElem='';
                 
@@ -629,7 +621,7 @@
                 
                 tempElem = document.createElement("a");
                 tempElem.href="javascript:checkAnswerH('A',"+gIndex+ ")";
-                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionA+"' height=75>";
+                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionA+"' height=50>";
                 
                 $('#newGameHard #optionA').replaceWith(tempElem);
                
@@ -637,14 +629,14 @@
                 tempElem = '';
                 tempElem = document.createElement("a");
                 tempElem.href="javascript:checkAnswerH('B',"+gIndex+ ")";
-                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionB+"' height=75>";
+                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionB+"' height=50>";
                 $('#newGameHard #optionB').replaceWith(tempElem);
                 
                 
                 tempElem = '';
                 tempElem = document.createElement("a");
                 tempElem.href="javascript:checkAnswerH('C',"+gIndex+ ")";
-                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionC+"' height=75>";
+                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionC+"' height=50>";
                
                 
                 $('#newGameHard #optionC').replaceWith(tempElem);
@@ -653,7 +645,7 @@
                 tempElem = '';
                 tempElem = document.createElement("a");
                 tempElem.href="javascript:checkAnswerH('D',"+gIndex+ ")";
-                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionD+"' height=75>";
+                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionD+"' height=50>";
                 
                 $('#newGameHard #optionD').replaceWith(tempElem);
                 
@@ -670,13 +662,12 @@
         <div data-role="page" data-control-title="gamePageH2" data-theme="b" id="gamePageH2">
             
         <div data-theme="b" data-role="header">
-            <a data-role="button" href="#pageLanding" class="ui-btn-left">Back</a>
             <h3>Question 2 of 6</h3>
         </div>
         
          
         <div data-role="content">
-            <ul data-role="listview" data-autodividers="false" data-filter="false">
+            <ul data-role="listview" data-autodividers="false" data-filter="false" id="hard">
                 <li><div id="optionA"></div></li>
                 <li><div id="optionB"></div></li>
                 <li><div id="optionC"></div></li>
@@ -699,27 +690,28 @@
                 
                 tempElem = document.createElement("a");
                 tempElem.href="javascript:checkAnswerH('A',"+gIndex+ ")";
-                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionA+"' height=75>";
+                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionA+"' height=50>";
                 $('#gamePageH2 #optionA').replaceWith(tempElem);
                 
                 tempElem = '';
                 tempElem = document.createElement("a");
                 tempElem.href="javascript:checkAnswerH('B',"+gIndex+ ")";
-                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionB+"' height=75>";
+                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionB+"' height=50>";
                 $('#gamePageH2 #optionB').replaceWith(tempElem);
                 
                 tempElem = '';
                 tempElem = document.createElement("a");
                 tempElem.href="javascript:checkAnswerH('C',"+gIndex+ ")";
-                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionC+"' height=75>";
+                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionC+"' height=50>";
                 
                 $('#gamePageH2 #optionC').replaceWith(tempElem);
                 
                 tempElem = '';
                 tempElem = document.createElement("a");
                 tempElem.href="javascript:checkAnswerH('D',"+gIndex+ ")";
-                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionD+"' height=75>";
+                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionD+"' height=50>";
                 $('#gamePageH2 #optionD').replaceWith(tempElem);
+               
                
             });
             
@@ -735,13 +727,12 @@
         <div data-role="page" data-control-title="gamePageH3" data-theme="b" id="gamePageH3">
             
         <div data-theme="b" data-role="header">
-            <a data-role="button" href="#pageLanding" class="ui-btn-left">Back</a>
             <h3>Question 3 of 6</h3>
         </div>
         
          
         <div data-role="content">
-            <ul data-role="listview" data-autodividers="false" data-filter="false">
+            <ul data-role="listview" data-autodividers="false" data-filter="false" id="hard">
                 <li><div id="optionA"></div></li>
                 <li><div id="optionB"></div></li>
                 <li><div id="optionC"></div></li>
@@ -755,7 +746,7 @@
         <script>
             
             $('#gamePageH3').on('pageshow', function() {
-                
+               
                 var gIndex= 2,
                 tempElem='';
                 
@@ -764,28 +755,28 @@
                 
                 tempElem = document.createElement("a");
                 tempElem.href="javascript:checkAnswerH('A',"+gIndex+ ")";
-                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionA+"' height=75>";
+                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionA+"' height=50>";
                 
                 $('#gamePageH3 #optionA').replaceWith(tempElem);
                 
                 tempElem = '';
                 tempElem = document.createElement("a");
                 tempElem.href="javascript:checkAnswerH('B',"+gIndex+ ")";
-                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionB+"' height=75>";
+                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionB+"' height=50>";
                 
                 $('#gamePageH3 #optionB').replaceWith(tempElem);
                 
                 tempElem = '';
                 tempElem = document.createElement("a");
                 tempElem.href="javascript:checkAnswerH('C',"+gIndex+ ")";
-                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionC+"' height=75>";
+                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionC+"' height=50>";
                 
                 $('#gamePageH3 #optionC').replaceWith(tempElem);
                 
                 tempElem = '';
                 tempElem = document.createElement("a");
                 tempElem.href="javascript:checkAnswerH('D',"+gIndex+ ")";
-                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionD+"' height=75>";
+                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionD+"' height=50>";
                 
                 $('#gamePageH3 #optionD').replaceWith(tempElem);
                 
@@ -804,13 +795,12 @@
         <div data-role="page" data-control-title="gamePageH4" data-theme="b" id="gamePageH4">
             
         <div data-theme="b" data-role="header">
-            <a data-role="button" href="#pageLanding" class="ui-btn-left">Back</a>
             <h3>Question 4 of 6</h3>
         </div>
         
          
         <div data-role="content">
-            <ul data-role="listview" data-autodividers="false" data-filter="false">
+            <ul data-role="listview" data-autodividers="false" data-filter="false" id="hard">
                 <li><div id="optionA"></div></li>
                 <li><div id="optionB"></div></li>
                 <li><div id="optionC"></div></li>
@@ -833,30 +823,30 @@
                 
                 tempElem = document.createElement("a");
                 tempElem.href="javascript:checkAnswerH('A',"+gIndex+ ")";
-                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionA+"' height=75>";
+                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionA+"' height=50>";
                 $('#gamePageH4 #optionA').replaceWith(tempElem);
                 
                 tempElem = '';
                 tempElem = document.createElement("a");
                 tempElem.href="javascript:checkAnswerH('B',"+gIndex+ ")";
-                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionB+"' height=75>";
+                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionB+"' height=50>";
                 $('#gamePageH4 #optionB').replaceWith(tempElem);
                 
                 tempElem = '';
                 tempElem = document.createElement("a");
                 tempElem.href="javascript:checkAnswerH('C',"+gIndex+ ")";
-                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionC+"' height=75>";
+                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionC+"' height=50>";
                 
                 $('#gamePageH4 #optionC').replaceWith(tempElem);
                 
                 tempElem = '';
                 tempElem = document.createElement("a");
                 tempElem.href="javascript:checkAnswerH('D',"+gIndex+ ")";
-                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionD+"' height=75>";
+                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionD+"' height=50>";
                 
                 $('#gamePageH4 #optionD').replaceWith(tempElem);
                 
-                
+               
             });
             
                 
@@ -872,13 +862,13 @@
         <div data-role="page" data-control-title="gamePageH5" data-theme="b" id="gamePageH5">
             
         <div data-theme="b" data-role="header">
-            <a data-role="button" href="#pageLanding" class="ui-btn-left">Back</a>
+            
             <h3>Question 5 of 6</h3>
         </div>
         
          
         <div data-role="content">
-            <ul data-role="listview" data-autodividers="false" data-filter="false">
+            <ul data-role="listview" data-autodividers="false" data-filter="false" id="hard">
                 <li><div id="optionA"></div></li>
                 <li><div id="optionB"></div></li>
                 <li><div id="optionC"></div></li>
@@ -892,7 +882,7 @@
         <script>
             
             $('#gamePageH5').on('pageshow', function() {
-                
+               
                 var gIndex= 4,
                 tempElem='';
                 
@@ -901,29 +891,29 @@
                 
                 tempElem = document.createElement("a");
                 tempElem.href="javascript:checkAnswerH('A',"+gIndex+ ")";
-                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionA+"' height=75>";
+                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionA+"' height=50>";
                 $('#gamePageH5 #optionA').replaceWith(tempElem);
                 
                 tempElem = '';
                 tempElem = document.createElement("a");
                 tempElem.href="javascript:checkAnswerH('B',"+gIndex+ ")";
-                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionB+"' height=75>";
+                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionB+"' height=50>";
                 $('#gamePageH5 #optionB').replaceWith(tempElem);
                 
                 tempElem = '';
                 tempElem = document.createElement("a");
                 tempElem.href="javascript:checkAnswerH('C',"+gIndex+ ")";
-                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionC+"' height=75>";
+                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionC+"' height=50>";
             
                 $('#gamePageH5 #optionC').replaceWith(tempElem);
                 
                 tempElem = '';
                 tempElem = document.createElement("a");
                 tempElem.href="javascript:checkAnswerH('D',"+gIndex+ ")";
-                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionD+"' height=75>";
+                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionD+"' height=50>";
                 $('#gamePageH5 #optionD').replaceWith(tempElem);
                 
-                
+            
             });
             
                 
@@ -940,13 +930,13 @@
         <div data-role="page" data-control-title="gamePageH2" data-theme="b" id="gamePageH6">
             
         <div data-theme="b" data-role="header">
-            <a data-role="button" href="#pageLanding" class="ui-btn-left">Back</a>
+            
             <h3>Question 6 of 6</h3>
         </div>
         
          
         <div data-role="content">
-            <ul data-role="listview" data-autodividers="false" data-filter="false">
+            <ul data-role="listview" data-autodividers="false" data-filter="false" id="hard">
                 <li><div id="optionA"></div></li>
                 <li><div id="optionB"></div></li>
                 <li><div id="optionC"></div></li>
@@ -969,29 +959,29 @@
                 
                 tempElem = document.createElement("a");
                 tempElem.href="javascript:checkAnswerH('A',"+gIndex+ ")";
-                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionA+"' height=75>";
+                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionA+"' height=50>";
                 $('#gamePageH6 #optionA').replaceWith(tempElem);
                 
                 tempElem = '';
                 tempElem = document.createElement("a");
                 tempElem.href="javascript:checkAnswerH('B',"+gIndex+ ")";
-                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionB+"' height=75>";
+                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionB+"' height=50>";
                 $('#gamePageH6 #optionB').replaceWith(tempElem);
                 
                 tempElem = '';
                 tempElem = document.createElement("a");
                 tempElem.href="javascript:checkAnswerH('C',"+gIndex+ ")";
-                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionC+"' height=75>";
+                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionC+"' height=50>";
                 $('#gamePageH6 #optionC').replaceWith(tempElem);
                 
                 tempElem = '';
                 tempElem = document.createElement("a");
                 tempElem.href="javascript:checkAnswerH('D',"+gIndex+ ")";
-                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionD+"' height=75>";
+                tempElem.innerHTML="<img src='"+triviaJSON.Hard[gIndex].optionD+"' height=50>";
                 
                 $('#gamePageH6 #optionD').replaceWith(tempElem);
                 
-                
+               
                 
             });
             
@@ -1008,18 +998,19 @@
         <div data-role="page" data-control-title="gamePageH7" data-theme="b" id="gamePageH7">
                     
         <div data-theme="b" data-role="header">
-            <a data-role="button" href="#pageLanding" class="ui-btn-left">Back</a>
+            
             <h3>Summary</h3>
         </div>
         
          
         <div data-role="content">
-            Congratulations. Your score is: 
+            Your score is: 
             <h2><div id="TotalScoreDiv"></div></h2>
+            <div id="chartdivHard" style="height:200px;width:300px; "></div>
             
             
             <p>Want to try an easier challenge?</p>
-            <ul data-role="listview" data-autodividers="false" data-filter="false">
+            <ul data-role="listview" data-autodividers="false" data-filter="false" id="hard">
                 <li><a href="#newGameEasy"><h1>New Easy Game</h1></a></li>
                 <li><a href="#newGameHard"><h1>Try Hard Game Again</h1></a></li>
             </ul>
@@ -1032,10 +1023,35 @@
             $('#gamePageH7').on('pageshow', function() {
                 var TS= localStorage.TS;
                 console.log('final tally: '  + TS);
-                //$('#gamePageH7 #TotalScoreDiv').replaceWith(TS);
-                $('#gamePageH7 #TotalScoreDiv').html(TS);
+                
+                $('#gamePageH7 #TotalScoreDiv').html(TS + " out " + triviaJSON.Hard.length);
+                
+                                
+                var plot2 = $.jqplot('chartdivHard', [
+                    [[TS,1]]], {
+                    seriesDefaults: {
+                        renderer:$.jqplot.BarRenderer,
+                        pointLabels: { show: true, location: 'e', edgeTolerance: -15 },
+                        shadowAngle: 135,
+                        // Here's where we tell the chart it is oriented horizontally.
+                        rendererOptions: {
+                            barDirection: 'horizontal'
+                        }
+                    },
+                    axes: {
+                        yaxis: {
+                            renderer: $.jqplot.CategoryAxisRenderer,
+                        },
+                        xaxis: {
+                            min: 0, max : triviaJSON.Hard.length
+                        }
+                    }
+                    });
+                
+                
             });
-            
+                
+             
         </script>
 
             

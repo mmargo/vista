@@ -119,5 +119,23 @@ h1 {
 .ui-li-static {
     background-color: transparent !important;
     background-image: url('') !important;
-    opacity:1;
+    
 }
+
+#optionA {
+    height: 50px;
+    
+}
+
+#optionB {
+    height: 50px;
+}
+
+#optionC {
+    height: 50px;
+}
+
+#optionD {
+    height: 50px;
+}
+

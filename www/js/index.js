@@ -131,4 +131,78 @@ function checkAnswerH(answer, questionIndex) {
     
 }
 
+var watchID = null;
+
+function stopWatch() {
+    if (watchID) 
+    {
+        navigator.accelerometer.clearWatch(watchID);
+        watchID = null;
+        
+    }
+    
+}
+                
+function startWatch(difficulty) {
+    var prevReading = { 
+        x: null,
+        y: null,
+        z: null};
+    
+    
+    
+    watchID = navigator.accelerometer.watchAcceleration(function (acc) {
+        var changes = {}, 
+        bound = 0.3;
+        if(prevReading.x !== null) {
+            changes.x = Math.abs(prevReading.x - acc.x);
+            changes.y = Math.abs(prevReading.y - acc.y);
+            changes.z = Math.abs(prevReading.z - acc.z);
+        }
+                    
+        if (changes.x > bound && changes.y > bound && changes.z > bound) {
+            shaken(difficulty);   
+        }
+                    
+        prevReading = {
+            x: acc.x,
+            y: acc.y,
+            z: acc.z};
+                    
+                
+    }, onError, {frequency:10000}); 
+};
+            
+function onError() {
+    alert("Accelerometer error");
+}
+                
+function shaken(difficultySetting) {
+    var response = confirm("Are you sure you want to start over?");
+    
+    if (response == true) {
+        if (difficultySetting == 'easy') {
+             $(':mobile-pagecontainer').pagecontainer('change','#newGameEasy', {
+                transition : 'flip',
+                changeHash : false, 
+                reverse : true,
+                showLoadMsg : true,
+                reload : true
+            });
+        }
+        else if (difficultySetting == 'hard') {
+            $(':mobile-pagecontainer').pagecontainer('change','#newGameHard', {
+                transition : 'flip',
+                changeHash : false, 
+                reverse : true,
+                showLoadMsg : true,
+                reload : true
+            });
+        }
+        
+    }
+    
+    
+}
+
 
