@@ -72,8 +72,10 @@ function checkAnswer(answer, questionIndex) {
         
     }
     else{
+        navigator.notification.vibrate(2000);
         alert("Incorrect :(");
         
+
         $(':mobile-pagecontainer').pagecontainer('change','#gamePage'+nextPage, {
             transition : 'flip',
             changeHash : false, 
@@ -112,8 +114,10 @@ function checkAnswerH(answer, questionIndex) {
         
     }
     else{
+        navigator.notification.vibrate(2000);
         alert("Incorrect :(");
         
+
         $(':mobile-pagecontainer').pagecontainer('change','#gamePageH'+nextPage, {
             transition : 'flip',
             changeHash : false, 

@@ -43,6 +43,7 @@
 		AE0BE0C299924096B25C7E83 /* CDVAccelerometer.m in Sources */ = {isa = PBXBuildFile; fileRef = 25E72CEF30014930937B40A2 /* CDVAccelerometer.m */; };
 		B366D78818CEE59E00FA46C6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B366D78718CEE59E00FA46C6 /* Images.xcassets */; };
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
+		E6E53653D6D34A46B87408F1 /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = D3668DD755324A14A16BCB38 /* CDVSplashScreen.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +129,8 @@
 		EB87FDF31871DA8E0020F90C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../www; sourceTree = "<group>"; };
 		F15D3F1B1F924F77853292B5 /* CDVExif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVExif.h; path = org.apache.cordova.camera/CDVExif.h; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = VistaPoint/config.xml; sourceTree = "<group>"; };
+		D3668DD755324A14A16BCB38 /* CDVSplashScreen.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVSplashScreen.m"; path = "org.apache.cordova.splashscreen/CDVSplashScreen.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		026187B7F1B14CE590ED5976 /* CDVSplashScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVSplashScreen.h"; path = "org.apache.cordova.splashscreen/CDVSplashScreen.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,6 +274,8 @@
 				5817C0C5295B414C800210AC /* CDVAccelerometer.h */,
 				0A6E9198D00749A4BC446017 /* CDVVibration.m */,
 				2E8566041B1C4F45B34BE0B0 /* CDVVibration.h */,
+				D3668DD755324A14A16BCB38 /* CDVSplashScreen.m */,
+				026187B7F1B14CE590ED5976 /* CDVSplashScreen.h */,
 			);
 			name = Plugins;
 			path = VistaPoint/Plugins;
@@ -473,6 +478,7 @@
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
 				AE0BE0C299924096B25C7E83 /* CDVAccelerometer.m in Sources */,
 				8F4B4C63BFB64FC7A88B76CE /* CDVVibration.m in Sources */,
+				E6E53653D6D34A46B87408F1 /* CDVSplashScreen.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,10 +646,10 @@
 					"-ObjC",
 				);
 				PROVISIONING_PROFILE = "3453956D-1796-4A2D-8CE0-5CC223BB30A5";
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos7.1;
 				SKIP_INSTALL = NO;
 				USER_HEADER_SEARCH_PATHS = "";
-				VALID_ARCHS = "arm64 armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
 		};
@@ -689,10 +695,10 @@
 					"-ObjC",
 				);
 				PROVISIONING_PROFILE = "3453956D-1796-4A2D-8CE0-5CC223BB30A5";
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos7.1;
 				SKIP_INSTALL = NO;
 				USER_HEADER_SEARCH_PATHS = "";
-				VALID_ARCHS = "arm64 armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
 		};
