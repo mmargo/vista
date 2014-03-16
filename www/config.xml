@@ -21,7 +21,7 @@ Martin Margo
 		<preference name="detect-data-types" value="true" />
 		<preference name="exit-on-suspend" value="true" />
 		<preference name="show-splash-screen-spinner" value="true" />
-		<preference name="auto-hide-splash-screen" value="true" />
+		<preference name="auto-hide-splash-screen" value="false" />
 		<preference name="EnableViewportScale" value="false" />
 		<preference name="MediaPlaybackRequiresUserAction" value="false" />
 		<preference name="AllowInlineMediaPlayback" value="false" />
@@ -61,6 +61,10 @@ Martin Margo
         <feature name="Notification">
             <param name="ios-package" value="CDVNotification" />
         </feature>
+        <feature name="SplashScreen">
+            <param name="ios-package" value="CDVSplashScreen" />
+        </feature>
+
 
 		<gap:splash src="img/Default~iphone.png" gap:platform="ios" width="320" height="480" />
 		<gap:splash src="img/Default@2x~iphone.png" gap:platform="ios" width="480" height="320" />

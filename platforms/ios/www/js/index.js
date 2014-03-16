@@ -43,7 +43,7 @@ var app = {
     onDeviceReady: function () {
         app.receivedEvent('deviceready');
         navigator.splashscreen.show();
-
+        
         setTimeout(function () {
                navigator.splashscreen.hide(); }, 2000);
     }

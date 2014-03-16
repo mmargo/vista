@@ -34,7 +34,7 @@ Martin Margo
     <preference name="detect-data-types" value="true" />
     <preference name="exit-on-suspend" value="true" />
     <preference name="show-splash-screen-spinner" value="true" />
-    <preference name="auto-hide-splash-screen" value="true" />
+    <preference name="auto-hide-splash-screen" value="false" />
     <preference name="EnableViewportScale" value="false" />
     <preference name="MediaPlaybackRequiresUserAction" value="false" />
     <preference name="AllowInlineMediaPlayback" value="false" />
@@ -74,6 +74,10 @@ Martin Margo
     <feature name="Notification">
         <param name="ios-package" value="CDVNotification" />
     </feature>
+    <feature name="SplashScreen">
+        <param name="onload" value="true" />
+        <param name="ios-package" value="CDVSplashScreen" />
+    </feature>
     <gap:splash gap:platform="ios" height="480" src="img/Default~iphone.png" width="320" />
     <gap:splash gap:platform="ios" height="320" src="img/Default@2x~iphone.png" width="480" />
     <gap:splash gap:platform="ios" height="960" src="img/Default-568h@2x~iphone.png.png" width="640" />
@@ -90,8 +94,4 @@ Martin Margo
     <gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen-portrait.jpg" />
     <gap:splash src="splash.png" />
     <access origin="http://127.0.0.1*" />
-    <feature name="SplashScreen">
-        <param name="ios-package" value="CDVSplashScreen" />
-        <param name="onload" value="true" />
-    </feature>
 </widget>
